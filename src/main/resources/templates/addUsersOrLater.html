@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="..." crossorigin="anonymous">
+</head>
+<body>
+
+<div th:replace="shared/header :: header"></div>
+
+<div>
+    <h2>Meeting Details</h2>
+    <p> <span th:text="${meeting.name}"></span></p>
+    <!-- Add other meeting details as needed -->
+
+    <!-- Button to redirect to addusertomeeting/{meetingId} -->
+    <a th:href="@{'/addusertomeeting/' + ${meeting.id}}" class="btn btn-primary">Add Users to Meeting</a>
+
+    <!-- Button to redirect to meetingsall -->
+    <a th:href="@{'/meetingsall'}" class="btn btn-secondary">Back to Meetings All</a>
+</div>
+
+</body>
+</html>

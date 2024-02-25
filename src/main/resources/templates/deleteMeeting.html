@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+</head>
+<body onload="submitDeleteForm()">
+
+<!-- Hidden form for automatic submission -->
+<form id="deleteForm" action="/deletemeeting/{meetingId}" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+
+<script>
+    function submitDeleteForm() {
+        // Extract user_id from the URL or replace with a specific user ID
+        const meetingId = window.location.pathname.split('/').pop();
+
+        // Set the action URL dynamically
+        document.getElementById('deleteForm').action = '/deletemeeting/' + meetingId;
+
+        // Submit the form
+        document.getElementById('deleteForm').submit();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+        /* Add your custom styles here */
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #343a40; /* Black */
+        }
+
+        table {
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        .table-dark th {
+            background-color: #343a40; /* Bootstrap dark color */
+            color: #ffffff;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f1f3f5; /* Bootstrap table-striped color */
+        }
+
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #dee2e6; /* Bootstrap table-bordered color */
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #dae0e5; /* Bootstrap table-hover color */
+        }
+
+        a {
+            color: #007bff; /* Bootstrap link color */
+        }
+
+        a:hover {
+            color: #0056b3; /* Bootstrap link hover color */
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="shared/header :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <h1>Registered Users</h1>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+
+        <!-- users.html -->
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td><a th:href="@{/userDetails/{userId}(userId=${user.user_id})}"><span th:text="${user.name}"></span></a></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>

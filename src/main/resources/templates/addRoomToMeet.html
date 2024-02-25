@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Link Room to Meeting</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="header">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/calendar}">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{'/userDetails/' + ${currentId}}">My Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/myMeetings}">My Meetings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+  <h2>Link Room to Meeting</h2>
+  <form action="/addroomtomeeting" method="post">
+    <label for="meetingId">Meeting ID:</label><br>
+    <input type="text" id="meetingId" name="meetingId"><br>
+    <label for="roomId">Room ID:</label><br>
+    <input type="text" id="roomId" name="roomId"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</body>
+
+</html>
