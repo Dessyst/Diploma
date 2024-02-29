@@ -14,13 +14,10 @@
 
 <script>
     function submitDeleteForm() {
-        // Extract user_id from the URL or replace with a specific user ID
         const userId = window.location.pathname.split('/').pop();
 
-        // Set the action URL dynamically
         document.getElementById('deleteForm').action = '/deleteuser/' + userId;
 
-        // Submit the form
         document.getElementById('deleteForm').submit();
     }
 </script>

@@ -23,15 +23,14 @@
 
   <!-- Button to redirect to editmeeting/{meetingId} -->
   <th:block th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-    <!-- Render the Edit Meeting button -->
-    <a th:href="@{'/editmeeting/' + ${meeting.meeting_id}}" class="btn btn-warning">Edit Meeting</a>
+    <a th:href="@{'/editmeeting/' + ${meeting.meeting_id}}" class="btn btn-warning mb-2">Edit Meeting</a>
   </th:block>
 
   <a th:href="@{/addusertomeeting/{meetingId}(meetingId=${meeting.id})}">
-    <button class="btn btn-primary">Add Users to Meeting</button>
+    <button class="btn btn-primary mb-2">Add Users to Meeting</button>
   </a>
   <div sec:authorize="hasRole('ROLE_ADMIN')">
-    <button class="btn btn-danger" th:attr="onclick='confirmDelete(\'' + ${meeting.meeting_id} + '\')'">Delete</button>
+    <button class="btn btn-danger mb-2" th:attr="onclick='confirmDelete(\'' + ${meeting.meeting_id} + '\')'">Delete</button>
   </div>
 
   <!-- JavaScript for confirmation -->

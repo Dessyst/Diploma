@@ -34,7 +34,6 @@ public class Meeting {
     @ManyToMany(mappedBy="meetings", fetch = FetchType.LAZY)
     private List<User> users;
     @ManyToMany(mappedBy = "meetings", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
     private List<Room> rooms;
 
     public void setId(int id) {

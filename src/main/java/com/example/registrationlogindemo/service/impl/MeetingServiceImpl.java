@@ -106,6 +106,7 @@ public class MeetingServiceImpl implements MeetingService{
     }
 
     @Override
+    @Transactional
     public void addRoom(Room room, Meeting meeting){
         meeting.getRooms().add(room);
         room.getMeetings().add(meeting);
