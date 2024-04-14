@@ -1,49 +1,45 @@
-<!-- meetingDetails.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Meeting Details</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Meeting Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
 </head>
 
 <body>
 <div class="container">
-  <h1>Meeting Details</h1>
-  <div>
-    <p><strong>Meeting Name:</strong> <span th:text="${meeting.name}"></span></p>
-    <p><strong>Start Time:</strong> <span th:text="${meeting.startTime}"></span></p>
-    <p><strong>End Time:</strong> <span th:text="${meeting.endTime}"></span></p>
-    <!-- Add more details as needed -->
-  </div>
+    <h1>Meeting Details</h1>
+    <div>
+        <p><strong>Meeting Name:</strong> <span th:text="${meeting.name}"></span></p>
+        <p><strong>Start Time:</strong> <span th:text="${meeting.startTime}"></span></p>
+        <p><strong>End Time:</strong> <span th:text="${meeting.endTime}"></span></p>
+    </div>
 
-  <!-- Button to redirect to editmeeting/{meetingId} -->
-  <th:block th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
-    <a th:href="@{'/editmeeting/' + ${meeting.meeting_id}}" class="btn btn-warning mb-2">Edit Meeting</a>
-  </th:block>
+    <th:block th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <a th:href="@{'/meeting/edit/' + ${meeting.id}}" class="btn btn-warning mb-2">Edit Meeting</a>
+    </th:block>
 
-  <a th:href="@{/addusertomeeting/{meetingId}(meetingId=${meeting.id})}">
-    <button class="btn btn-primary mb-2">Add Users to Meeting</button>
-  </a>
-  <div sec:authorize="hasRole('ROLE_ADMIN')">
-    <button class="btn btn-danger mb-2" th:attr="onclick='confirmDelete(\'' + ${meeting.meeting_id} + '\')'">Delete</button>
-  </div>
+    <a th:href="@{/meeting/adduser/{meetingId}(meetingId=${meeting.id})}">
+        <button class="btn btn-primary mb-2">Add Users to Meeting</button>
+    </a>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-danger mb-2" th:attr="onclick='confirmDelete(\'' + ${meeting.id} + '\')'">
+            Delete
+        </button>
+    </div>
 
-  <!-- JavaScript for confirmation -->
-  <script th:inline="javascript">
-    function confirmDelete(meetingId) {
-      if (confirm("Are you sure you want to delete this meeting?")) {
-        // User confirmed, perform deletion or redirect to delete endpoint
-        window.location.href = '/deletemeeting/' + meetingId;
-      } else {
-        // User canceled, do nothing
-      }
-    }
-  </script>
+    <script th:inline="javascript">
+        function confirmDelete(meetingId) {
+            if (confirm("Are you sure you want to delete this meeting?")) {
+                // User confirmed, perform deletion or redirect to delete endpoint
+                window.location.href = '/meeting/delete/' + meetingId;
+            }
+        }
+    </script>
 </div>
 </body>
 

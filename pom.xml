@@ -8,11 +8,11 @@
 		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.guides.springboot</groupId>
-	<artifactId>registration-login-demo</artifactId>
+	<groupId>officeManager</groupId>
+	<artifactId>officeManager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>registration-login-demo</name>
-	<description>registration-login-demo</description>
+	<name>officeManager</name>
+	<description>officeManager</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

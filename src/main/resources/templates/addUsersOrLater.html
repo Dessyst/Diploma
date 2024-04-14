@@ -12,14 +12,11 @@
 
 <div>
     <h2>Meeting Details</h2>
-    <p> <span th:text="${meeting.name}"></span></p>
-    <!-- Add other meeting details as needed -->
+    <p><span th:text="${meeting.name}"></span></p>
 
-    <!-- Button to redirect to addusertomeeting/{meetingId} -->
-    <a th:href="@{'/addusertomeeting/' + ${meeting.id}}" class="btn btn-primary">Add Users to Meeting</a>
+    <a th:href="@{'/meeting/adduser/' + ${meeting.id}}" class="btn btn-primary">Add Users to Meeting</a>
 
-    <!-- Button to redirect to meetingsall -->
-    <a th:href="@{'/meetingsall'}" class="btn btn-secondary">Back to Meetings All</a>
+    <a th:href="@{'/meeting'}" class="btn btn-secondary">Back to Meetings All</a>
 </div>
 
 </body>

@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda Day</title>
-  <!-- Include FullCalendar CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" />
-  <!-- Include jQuery and FullCalendar scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
-  <!-- Include your custom CSS styles if needed -->
-  <link rel="stylesheet" integrity="..." crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Day</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+    <link rel="stylesheet" integrity="..." crossorigin="anonymous">
 </head>
 <body>
 
-<!-- FullCalendar container -->
 <div class="container">
-  <h1>Agenda Day View</h1>
-  <div id="calendar"></div>
+    <h1>Agenda Day View</h1>
+    <div id="calendar"></div>
 
-  <!-- Include your custom content for the agendaDay view -->
-  <p>This is the agendaDay view for a specific day.</p>
+    <p>This is the agendaDay view for a specific day.</p>
 </div>
 
-<!-- Include your custom JavaScript files or FullCalendar initialization script -->
 <script>
-  $(document).ready(function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const clickedDate = urlParams.get('date');
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const clickedDate = urlParams.get('date');
 
-    // Fetch events data for the clicked date from the server
-    $.ajax({
-      url: '/events', // Replace with your server endpoint to fetch events for a specific day
-      method: 'GET',
-      data: { date: clickedDate },
-      success: function (events) {
-        // FullCalendar initialization for agendaDay view
-        $('#calendar').fullCalendar({
-          defaultView: 'agendaDay',
-          defaultDate: clickedDate,
-          events: events, // Pass the events data for the clicked date
-          // Add any other FullCalendar options you need
+        $.ajax({
+            url: '/events',
+            method: 'GET',
+            data: {date: clickedDate},
+            success: function (events) {
+                $('#calendar').fullCalendar({
+                    defaultView: 'agendaDay',
+                    defaultDate: clickedDate,
+                    events: events,
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching events:', error);
+            }
         });
-      },
-      error: function (error) {
-        console.error('Error fetching events:', error);
-      }
     });
-  });
 </script>
 
 </body>

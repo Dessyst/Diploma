@@ -7,20 +7,16 @@
 </head>
 <body onload="submitDeleteForm()">
 
-<!-- Hidden form for automatic submission -->
-<form id="deleteForm" action="/deletemeeting/{meetingId}" method="post">
+<form id="deleteForm" action="/meeting/delete/{meetingId}" method="post">
     <input type="hidden" name="_method" value="delete">
 </form>
 
 <script>
     function submitDeleteForm() {
-        // Extract user_id from the URL or replace with a specific user ID
         const meetingId = window.location.pathname.split('/').pop();
 
-        // Set the action URL dynamically
-        document.getElementById('deleteForm').action = '/deletemeeting/' + meetingId;
+        document.getElementById('deleteForm').action = '/meeting/delete/' + meetingId;
 
-        // Submit the form
         document.getElementById('deleteForm').submit();
     }
 </script>

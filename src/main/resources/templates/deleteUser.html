@@ -7,8 +7,7 @@
 </head>
 <body onload="submitDeleteForm()">
 
-<!-- Hidden form for automatic submission -->
-<form id="deleteForm" action="/deleteuser/{userId}" method="post">
+<form id="deleteForm" action="/user/delete/{userId}" method="post">
     <input type="hidden" name="_method" value="delete">
 </form>
 
@@ -16,7 +15,7 @@
     function submitDeleteForm() {
         const userId = window.location.pathname.split('/').pop();
 
-        document.getElementById('deleteForm').action = '/deleteuser/' + userId;
+        document.getElementById('deleteForm').action = '/user/delete/' + userId;
 
         document.getElementById('deleteForm').submit();
     }

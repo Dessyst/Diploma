@@ -2,34 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-  <!-- Your head content here... -->
 </head>
 
 <body>
 <div class="container">
-  <h1>User Details</h1>
-  <div>
-    <p><strong>First Name:</strong> <span th:text="${user.name}"></span></p>
-    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
-  </div>
-  <a th:href="@{/editUser/{userId}(userId=${user.user_id})}">
-    <button class="btn btn-primary">Edit</button>
-  </a>
+    <h1>User Details</h1>
+    <div>
+        <p><strong>First Name:</strong> <span th:text="${user.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    </div>
+    <a th:href="@{/user/edit/{userId}(userId=${user.id})}">
+        <button class="btn btn-primary">Edit</button>
+    </a>
 
-  <!-- Check if the user has ROLE_ADMIN before rendering the delete button -->
-  <div sec:authorize="hasRole('ROLE_ADMIN')">
-    <button class="btn btn-danger" th:attr="onclick='confirmDelete(\'' + ${user.user_id} + '\')'">Delete</button>
-  </div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <button class="btn btn-danger" th:attr="onclick='confirmDelete(\'' + ${user.id} + '\')'">Delete</button>
+    </div>
 
-  <!-- JavaScript for confirmation -->
-
-  <script th:inline="javascript">
-    function confirmDelete(userId) {
-      if (confirm("Are you sure you want to delete this user?")) {
-        window.location.href = '/delete-user/' + userId;
-      }
-    }
-  </script>
+    <script th:inline="javascript">
+        function confirmDelete(userId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                window.location.href = '/user/delete/' + userId;
+            }
+        }
+    </script>
 </div>
 </body>
 

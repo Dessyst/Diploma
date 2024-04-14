@@ -9,7 +9,6 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
     <style>
-        /* Add your custom styles here */
 
         body {
             background-color: #f8f9fa;
@@ -20,7 +19,7 @@
         }
 
         h1 {
-            color: #343a40; /* Black */
+            color: #343a40;
         }
 
         table {
@@ -32,28 +31,28 @@
         }
 
         .table-dark th {
-            background-color: #343a40; /* Bootstrap dark color */
+            background-color: #343a40;
             color: #ffffff;
         }
 
         .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #f1f3f5; /* Bootstrap table-striped color */
+            background-color: #f1f3f5;
         }
 
         .table-bordered th, .table-bordered td {
-            border: 1px solid #dee2e6; /* Bootstrap table-bordered color */
+            border: 1px solid #dee2e6;
         }
 
         .table-hover tbody tr:hover {
-            background-color: #dae0e5; /* Bootstrap table-hover color */
+            background-color: #dae0e5;
         }
 
         a {
-            color: #007bff; /* Bootstrap link color */
+            color: #007bff;
         }
 
         a:hover {
-            color: #0056b3; /* Bootstrap link hover color */
+            color: #0056b3;
         }
     </style>
 </head>
@@ -73,11 +72,20 @@
         </tr>
         </thead>
 
-        <!-- users.html -->
         <tbody>
         <tr th:each="user: ${users}">
-            <td><a th:href="@{/userDetails/{userId}(userId=${user.user_id})}"><span th:text="${user.name}"></span></a></td>
+            <td>
+                <a th:href="@{/user/{userId}(userId=${user.id})}">
+                    <span th:text="${user.name}"></span>
+                </a>
+            </td>
             <td th:text="${user.email}"></td>
+            <td>
+                <a th:href="@{'/user/' + ${user.id}}">
+                    <button class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+
         </tr>
         </tbody>
     </table>

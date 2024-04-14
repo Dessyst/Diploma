@@ -20,8 +20,7 @@
                 <h2 class="text-center">Create Meeting</h2>
             </div>
             <div class="card-body">
-                <!-- Meeting creation form -->
-                <form method="post" th:action="@{/bookroom/{roomId}(roomId=${room.room_id})}" th:object="${meeting}">
+                <form method="post" th:action="@{/room/book/{roomId}(roomId=${room.id})}" th:object="${meeting}">
                     <div class="form-group mb-3">
                         <label class="form-label">Meeting Name</label>
                         <input class="form-control" name="name" th:field="*{name}" type="text"/>
@@ -39,32 +38,10 @@
                         <input class="form-control" name="endTime" th:field="*{endTime}" type="datetime-local"/>
                         <p class="text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></p>
                     </div>
-
-
-
-                    <!-- Input fields for meeting ID and user ID -->
-                    <!--<div class="form-group mb-3">
-                      <label class="form-label">Meeting ID</label>
-                      <input class="form-control" name="meetingId" type="text"/>
-                    </div>-->
-
-                    <!--<div class="form-group mb-3">
-                      <label class="form-label">User ID</label>
-                      <input class="form-control" name="userId" type="text"/>
-                    </div>-->
-
-
                     <div class="form-group mb-3">
                         <button class="btn btn-primary" type="submit">Create Meeting</button>
                     </div>
-
-
-
-
-
                 </form>
-
-
             </div>
         </div>
     </div>
